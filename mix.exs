@@ -27,7 +27,7 @@ defmodule AccesslintService.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:trot, github: "hexedpackets/trot"},
+    [{:trot, "~> 0.5.3"},
      {:poison, "~> 1.4"}]
   end
 end

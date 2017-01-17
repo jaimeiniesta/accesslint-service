@@ -19,9 +19,12 @@ To set up this app on your machine you'll need to install:
 There is currently only one endpoint, `/check`, that accepts an `url` parameter and returns the results in JSON format,
 for example:
 
-http://accesslint-service-demo.herokuapp.com/check?url=http://validationhell.com
+`$ curl http://accesslint-service-demo.herokuapp.com/check?url=http://validationhell.com`
+
 ```json
 {
+    "url": "http://validationhell.com",
+    "outcome": "ok",
     "violations": [
         {
             "url": "http://validationhell.com/",
@@ -51,10 +54,24 @@ http://accesslint-service-demo.herokuapp.com/check?url=http://validationhell.com
             "impact": "serious",
             "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements"
         }
-    ],
-    "url": "http://validationhell.com"
+    ]
 }
 ```
+
+Check out the value in the `outcome` attribute, when it's `ok` you'll also have the array of found `violations` to the A11Y rules.
+
+This `outcome` could also be `error`, for example when an invalid URL was passed:
+
+`curl http://accesslint-service-demo.herokuapp.com/check?url=nonsense`
+
+```json
+{
+  "url": "nonsense",
+  "errors": ["Invalid url"]
+}
+```
+
+Or `crash` if there was an internal error (unfortunately, PhantomJS tends to crash from time to time).
 
 ## Heroku deployment
 
