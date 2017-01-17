@@ -16,13 +16,22 @@ defmodule AccesslintService.Router do
   end
 
   get "/check" do
-    url        = parse_params(conn)[:url]
-    violations = parse_violations(url)
-    results    = Poison.encode!(%{ "url" => url, "violations" => violations }, [])
+    case validate_uri(parse_params(conn)[:url]) do
+      { :ok, url } ->
+        violations = parse_violations(url)
+        results    = Poison.encode!(%{ "url" => url, "violations" => violations }, [])
 
-    conn
-    |> put_resp_content_type("application/json")
-    |> send_resp(200, results)
+        conn
+        |> put_resp_content_type("application/json")
+        |> send_resp(200, results)
+
+      { :error, url } ->
+        results = Poison.encode!(%{ "url" => url, "errors" => ["Invalid url"] }, [])
+
+        conn
+        |> put_resp_content_type("application/json")
+        |> send_resp(400, results)
+    end
   end
 
   import_routes Trot.NotFound
@@ -45,5 +54,20 @@ defmodule AccesslintService.Router do
                                    |> String.split(" | ")
 
      %{ url: url, impact: impact, help: help, nodes: Poison.decode!(nodes) }
+  end
+
+  @doc """
+    Validates a string can be parsed as an URI, having scheme and host.
+  """
+  def validate_uri(nil) do
+    { :error, nil }
+  end
+
+  def validate_uri(str) do
+    case URI.parse(str) do
+      %URI{ scheme: nil } -> {:error, str}
+      %URI{ host:   nil } -> {:error, str}
+      _                   -> { :ok, str }
+    end
   end
 end
