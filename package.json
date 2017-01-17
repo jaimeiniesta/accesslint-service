@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "accesslint-cli": "~1.1.1"
+  }
+}

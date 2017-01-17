@@ -8,7 +8,7 @@ defmodule AccesslintService.Router do
 
     To check a page for accessibility issues, do it like this:
 
-    /check?url=http://example.com
+    http://accesslint-service-demo.herokuapp.com/check?url=http://validationhell.com
 
     This will check the passed url using accesslint-cli and return
     the issues found in JSON format.
