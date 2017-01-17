@@ -2,6 +2,14 @@
 
 A web service to check Accessibility on your sites using [accesslint-cli](https://github.com/accesslint/accesslint-cli.js)
 
+## Dependencies
+
+To set up this app on your machine you'll need to install:
+
+* [Elixir](http://elixir-lang.org/install.html)
+* [PhantomJS](http://phantomjs.org/)
+* [accesslint-cli](https://www.npmjs.com/package/accesslint-cli)
+
 ## Starting the web service
 
 `PORT=4000 mix trot.server`
