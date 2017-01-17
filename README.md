@@ -11,7 +11,7 @@ A web service to check Accessibility on your sites using [accesslint-cli](https:
 There is currently only one endpoint, `/check`, that accepts an `url` parameter and returns the results in JSON format,
 for example:
 
-http://accesslint-service-demo.herokuapp.com/check?url=http://github.com
+http://accesslint-service-demo.herokuapp.com/check?url=http://validationhell.com
 ```json
 {
     "violations": [
