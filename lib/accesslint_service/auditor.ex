@@ -1,9 +1,14 @@
 defmodule AccesslintService.Auditor do
   alias AccesslintService.Auditor
 
-  def audit(url) do
-    wait_for_rate_limit
+  def request_audit(url) do
+    case wait_for_rate_limit do
+      :ok   -> perform_audit(url)
+      :busy -> { :busy, [] }
+    end
+  end
 
+  def perform_audit(url) do
     try do
       auditor_pid = Task.async(Auditor, :violations, [url])
 
@@ -47,14 +52,20 @@ defmodule AccesslintService.Auditor do
     Too many concurrent requests may cause PhantomJS to crash, this ensures at most
     5 requests in a 5 seconds period are accepted. If there are more, they are made to
     wait a bit.
+
+    If the waiting becomes too long (more than 10 seconds), then :busy is returned.
   """
-  defp wait_for_rate_limit do
+  defp wait_for_rate_limit(seconds \\ 0) do
     case ExRated.check_rate("accesslint", @rate_limit_time, @rate_limit_pages) do
       {:ok, count} ->
         :ok
       {:error, count} ->
-        :timer.sleep(100)
-        wait_for_rate_limit
+        if (seconds < 10) do
+          :timer.sleep(1_000)
+          wait_for_rate_limit(seconds + 1)
+        else
+          :busy
+        end
     end
   end
 end

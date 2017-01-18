@@ -27,9 +27,12 @@ defmodule AccesslintService.Router do
   get "/check" do
     case validate_uri(parse_params(conn)[:url]) do
       { :ok, url } ->
-        case { outcome, violations } = Auditor.audit(url) do
+        case { outcome, violations } = Auditor.request_audit(url) do
           { :ok, violations } ->
             response(conn, 200, %{ "url" => url, "outcome" => outcome, "violations" => violations })
+
+          { :busy, [] } ->
+            response(conn, 503, %{ "url" => url, "outcome" => outcome })
 
           { :crash, [] } ->
             response(conn, 500, %{ "url" => url, "outcome" => outcome })

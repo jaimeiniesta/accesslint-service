@@ -60,20 +60,12 @@ for example:
 }
 ```
 
-Check out the value in the `outcome` attribute, when it's `ok` you'll also have the array of found `violations` to the A11Y rules.
+Check out the value in the `outcome` attribute:
 
-This `outcome` could also be `error`, for example when an invalid URL was passed:
-
-`curl http://accesslint-service-demo.herokuapp.com/check?url=nonsense`
-
-```json
-{
-  "url": "nonsense",
-  "errors": ["Invalid url"]
-}
-```
-
-Or `crash` if there was an internal error (unfortunately, PhantomJS tends to crash from time to time).
+* `ok` means the check was performed, you'll get also an array with the `violations` found.
+* `error` means the `url` param was invalid.
+* `busy` means that there was a timeout due to server overload. You can retry the request.
+* `crash` means there was an internal server error.
 
 ## Heroku deployment
 
