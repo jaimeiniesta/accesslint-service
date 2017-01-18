@@ -14,7 +14,7 @@ defmodule AccesslintService.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :trot]]
+    [applications: [:logger, :trot, :ex_rated]]
   end
 
   # Dependencies can be Hex packages:
@@ -28,6 +28,7 @@ defmodule AccesslintService.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:trot, "~> 0.5.3"},
-     {:poison, "~> 1.4"}]
+     {:poison, "~> 1.4"},
+     {:ex_rated, "~> 1.2"}]
   end
 end

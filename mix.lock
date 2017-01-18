@@ -1,6 +1,8 @@
 %{"calliope": {:hex, :calliope, "0.3.0", "81c2937b27094eee8f8a3fce5effb9140cb8a1fbc03620c6ff57a798d400a3ce", [:mix], []},
   "cowboy": {:hex, :cowboy, "1.0.4", "a324a8df9f2316c833a470d918aaf73ae894278b8aa6226ce7a9bf699388f878", [:make, :rebar], [{:cowlib, "~> 1.0.0", [hex: :cowlib, optional: false]}, {:ranch, "~> 1.0", [hex: :ranch, optional: false]}]},
   "cowlib": {:hex, :cowlib, "1.0.2", "9d769a1d062c9c3ac753096f868ca121e2730b9a377de23dec0f7e08b1df84ee", [:make], []},
+  "ex2ms": {:hex, :ex2ms, "1.4.0", "e43b410888b45ba363ea6650db3736db3e455a0a412ec244ac633fede857bcb2", [:mix], []},
+  "ex_rated": {:hex, :ex_rated, "1.2.2", "0d177d341f6febf648db73459b9e15ef57d619de5526f9b9d0283d5ee39b62cd", [:mix], [{:ex2ms, "~> 1.4.0", [hex: :ex2ms, optional: false]}]},
   "plug": {:hex, :plug, "0.14.0", "4b4e26c3af8cb50e468f9eaa39566796447c92a7ec417a025b819302ff948283", [:mix], [{:cowboy, "~> 1.0", [hex: :cowboy, optional: true]}]},
   "plug_heartbeat": {:hex, :plug_heartbeat, "0.2.0", "912485e20cf483da21d6dfd4f6ed0dcc8d497f497b123231a73a326239b3f2f1", [:mix], [{:cowboy, ">= 1.0.0", [hex: :cowboy, optional: false]}, {:plug, ">= 0.12.0", [hex: :plug, optional: false]}]},
   "poison": {:hex, :poison, "1.5.2", "560bdfb7449e3ddd23a096929fb9fc2122f709bcc758b2d5d5a5c7d0ea848910", [:mix], []},
