@@ -1,6 +1,8 @@
 # accesslint-service
 
-A web service to check Accessibility on your sites using [accesslint-cli](https://github.com/accesslint/accesslint-cli.js)
+A web service to check Accessibility on your sites using [accesslint-cli](https://github.com/accesslint/accesslint-cli.js).
+
+Check out the [A11Y rules](https://github.com/dequelabs/axe-core/blob/master/doc/rule-descriptions.md) that are checked.
 
 ## Dependencies
 
