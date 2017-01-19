@@ -1,0 +1,13 @@
+{
+  "name": "AccessLint Service",
+  "description": "A web service to check Accessibility on your sites using accesslint-cli.",
+  "repository": "https://github.com/jaimeiniesta/accesslint-service",
+  "logo": "https://dl.dropboxusercontent.com/u/2268180/kiai/kiai-original.png",
+  "keywords": ["elixir", "phantomjs", "a11y"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git",
+      "url": "heroku/nodejs"
+    }
+  ]
+}
