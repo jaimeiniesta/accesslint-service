@@ -4,6 +4,8 @@ A web service to check Accessibility on your sites using [accesslint-cli](https:
 
 Check out the [A11Y rules](https://github.com/dequelabs/axe-core/blob/master/doc/rule-descriptions.md) that are checked.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Dependencies
 
 To set up this app on your machine you'll need to install:
@@ -11,6 +13,8 @@ To set up this app on your machine you'll need to install:
 * [Elixir](http://elixir-lang.org/install.html)
 * [PhantomJS](http://phantomjs.org/)
 * [accesslint-cli](https://www.npmjs.com/package/accesslint-cli)
+
+Check out `app.json` to see the buildpacks used to deploy to Heroku.
 
 ## Starting the web service
 
@@ -66,10 +70,3 @@ Check out the value in the `outcome` attribute:
 * `error` means the `url` param was invalid.
 * `busy` means that there was a timeout due to server overload. You can retry the request.
 * `crash` means there was an internal server error.
-
-## Heroku deployment
-
-Add the buildpacks:
-
-* https://github.com/HashNuke/heroku-buildpack-elixir.git
-* heroku/nodejs
