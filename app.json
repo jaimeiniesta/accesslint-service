@@ -6,7 +6,9 @@
   "keywords": ["elixir", "phantomjs", "a11y"],
   "buildpacks": [
     {
-      "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git",
+      "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git"
+    },
+    {
       "url": "heroku/nodejs"
     }
   ]
