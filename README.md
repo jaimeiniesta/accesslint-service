@@ -71,6 +71,11 @@ Check out the value in the `outcome` attribute:
 * `busy` means that there was a timeout due to server overload. You can retry the request.
 * `crash` means there was an internal server error.
 
+## Memory limitations
+
+AccessLint uses PhantomJS, which consumes a lot of RAM. You can expect around 350 Mb per each request,
+so it's recommended that you use a server with a decent amount of RAM, probably more than 4 Gb if possible.
+
 ## Clients
 
 * [Kia11y](https://github.com/jaimeiniesta/kia11y) is a client for AccessLint Service written in Elixir.
